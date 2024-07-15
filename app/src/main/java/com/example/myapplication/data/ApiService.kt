@@ -20,6 +20,8 @@ val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
+
+
 interface ApiService {
     @GET("pokemon")
     suspend fun getPokemonList(): PokemonListResponse
@@ -27,6 +29,7 @@ interface ApiService {
     @GET("pokemon/{name}")
     suspend fun getPokemonDetails(@Path("name") pokemonName: String): PokemonDetailResponse
 }
+
 
 object PokeApi {
     val apiService: ApiService by lazy { retrofit.create(ApiService::class.java) }

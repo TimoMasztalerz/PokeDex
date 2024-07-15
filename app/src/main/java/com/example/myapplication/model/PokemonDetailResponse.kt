@@ -1,12 +1,22 @@
-
 package com.example.myapplication.model
 
 data class PokemonDetailResponse(
-    val sprites: Sprites,
+    val id: Int,
     val name: String,
-    val id: Int
+    val sprites: Sprites,
+    val types: List<TypeResponse>
 )
 
 data class Sprites(
-    val front_default: String? // Change to nullable and use the correct field name
+    val front_default: String
+)
+
+data class TypeResponse(
+    val slot: Int,
+    val type: Type
+)
+
+data class Type(
+    val name: String,
+    val url: String
 )

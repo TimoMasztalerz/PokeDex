@@ -9,9 +9,11 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.MainViewModel
 import com.example.myapplication.databinding.FragmentPokemonListBinding
+import com.example.myapplication.model.PokemonDetailResponse
 
 class PokemonListFragment : Fragment() {
     private var _binding: FragmentPokemonListBinding? = null
@@ -34,11 +36,18 @@ class PokemonListFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        adapter = PokeAdapter()
+        adapter = PokeAdapter { pokemon ->
+            navigateToDetail(pokemon)
+        }
         binding.pokemonRecyclerView.apply {
             this.adapter = this@PokemonListFragment.adapter
             layoutManager = LinearLayoutManager(requireContext())
         }
+    }
+
+    private fun navigateToDetail(pokemon: PokemonDetailResponse) {
+        val action = PokemonListFragmentDirections.actionListFragmentToDetailFragment(pokemon.id)
+        findNavController().navigate(action)
     }
 
     private fun setupTypeFilterSpinner() {
@@ -78,11 +87,15 @@ class PokemonListFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.pokemonList.observe(viewLifecycleOwner) { list ->
             adapter.submitList(list)
-        }}
+        }
 
 
-
-
+        viewModel.error.observe(viewLifecycleOwner) { error ->
+            if (error.isNotEmpty()) {
+                Toast.makeText(context, error, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

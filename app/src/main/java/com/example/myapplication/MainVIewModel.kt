@@ -16,6 +16,9 @@ class MainViewModel(private val repository: Repository = Repository()) : ViewMod
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
+    private val _pokemonDetails = MutableLiveData<PokemonDetailResponse>()
+    val pokemonDetails: LiveData<PokemonDetailResponse> = _pokemonDetails
+
     private var originalList: List<PokemonDetailResponse> = emptyList()
     private var currentFilter: String = "All Types"
 
@@ -75,12 +78,13 @@ class MainViewModel(private val repository: Repository = Repository()) : ViewMod
         viewModelScope.launch {
             try {
                 _isLoading.value = true
-                val pokemonDetails = repository.getPokemonDetails(pokemonId)
+                val details = repository.getPokemonDetails(pokemonId)
+                _pokemonDetails.value = details
                 // Update the specific Pokemon in the list
                 val currentList = _pokemonList.value?.toMutableList() ?: mutableListOf()
                 val index = currentList.indexOfFirst { it.id == pokemonId }
                 if (index != -1) {
-                    currentList[index] = pokemonDetails
+                    currentList[index] = details
                     _pokemonList.value = currentList
                 }
             } catch (ex: Exception) {
@@ -92,7 +96,6 @@ class MainViewModel(private val repository: Repository = Repository()) : ViewMod
         }
     }
 
-    // New sorting functions
     fun sortById() {
         _pokemonList.value = _pokemonList.value?.sortedBy { it.id }
     }
@@ -105,7 +108,6 @@ class MainViewModel(private val repository: Repository = Repository()) : ViewMod
         _pokemonList.value = _pokemonList.value?.sortedWith(compareBy<PokemonDetailResponse> { it.types.firstOrNull()?.type?.name ?: "" }.thenBy { it.id })
     }
 
-    // Function to apply both filter and sort
     fun applyFilterAndSort(type: String, sortBy: String) {
         viewModelScope.launch {
             try {

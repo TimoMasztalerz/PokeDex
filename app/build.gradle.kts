@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -10,6 +11,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
 
     defaultConfig {
         applicationId = "com.example.myapplication"
@@ -40,6 +42,7 @@ android {
 }
 
 dependencies {
+
     implementation("io.coil-kt:coil:2.4.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")

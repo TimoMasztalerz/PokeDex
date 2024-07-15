@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/background_prairie_pokemon_screencapture_by_nemotrex_de8nlib_fullview"
-    android:padding="8dp"
-    android:layout_marginBottom="6dp">
+    android:layout_marginBottom="6dp"
+    android:background="#5937AC32"
+    android:backgroundTint="#70128C7A"
+    android:padding="8dp">
 
     <ImageView
         android:id="@+id/pokemonImage"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="66dp"
+        android:layout_height="65dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
@@ -32,10 +33,11 @@
         android:id="@+id/pokemonId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="96dp"
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@id/pokemonImage"
-        app:layout_constraintTop_toBottomOf="@id/pokemonName"
+        tools:layout_editor_absoluteY="1dp"
         tools:text="ID: 25" />
 
     <TextView
@@ -43,7 +45,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@id/pokemonImage"
         app:layout_constraintTop_toBottomOf="@id/pokemonId"
         tools:text="Electric" />

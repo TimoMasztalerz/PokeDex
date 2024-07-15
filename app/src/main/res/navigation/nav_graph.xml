@@ -9,5 +9,19 @@
         android:id="@+id/listFragment"
         android:name="com.example.myapplication.ui.PokemonListFragment"
         android:label="fragment_list"
-        tools:layout="@layout/fragment_pokemon_list" />
+        tools:layout="@layout/fragment_pokemon_list">
+        <action
+            android:id="@+id/action_listFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.myapplication.ui.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="pokemonId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

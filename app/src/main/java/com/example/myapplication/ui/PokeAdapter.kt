@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ListItemBinding
-class PokeAdapter : RecyclerView.Adapter<PokeAdapter.PokemonViewHolder>() {
+
+class PokeAdapter(private val onItemClick: (PokemonDetailResponse) -> Unit) : RecyclerView.Adapter<PokeAdapter.PokemonViewHolder>() {
     private var pokemonList: List<PokemonDetailResponse> = emptyList()
 
     fun submitList(newList: List<PokemonDetailResponse>) {
@@ -34,6 +35,11 @@ class PokeAdapter : RecyclerView.Adapter<PokeAdapter.PokemonViewHolder>() {
             binding.pokemonImage.load(pokemon.sprites.front_default) {
                 crossfade(true)
                 placeholder(R.drawable.ic_launcher_foreground)
+
+            }
+
+            itemView.setOnClickListener {
+                onItemClick(pokemon)
             }
         }
     }

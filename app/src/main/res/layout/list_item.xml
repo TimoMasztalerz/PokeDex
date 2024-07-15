@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:background="@drawable/background_prairie_pokemon_screencapture_by_nemotrex_de8nlib_fullview"
+    android:padding="8dp"
+    android:layout_marginBottom="6dp">
 
     <ImageView
         android:id="@+id/pokemonImage"
@@ -19,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/pokemonImage"
@@ -30,6 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@id/pokemonImage"
         app:layout_constraintTop_toBottomOf="@id/pokemonName"
         tools:text="ID: 25" />
@@ -39,6 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@id/pokemonImage"
         app:layout_constraintTop_toBottomOf="@id/pokemonId"
         tools:text="Electric" />

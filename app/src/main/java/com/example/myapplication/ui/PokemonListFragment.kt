@@ -68,7 +68,7 @@ class PokemonListFragment : Fragment() {
     }
 
     private fun setupSortSpinner() {
-        val sortOptions = listOf("ID", "Alphabetical", "Type")
+        val sortOptions = listOf("ID", "A-Z", "Type")
         val spinnerAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, sortOptions)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 

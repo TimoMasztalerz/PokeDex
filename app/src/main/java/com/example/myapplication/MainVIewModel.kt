@@ -105,20 +105,26 @@ class MainViewModel(private val repository: Repository = Repository()) : ViewMod
     }
 
     fun sortByType() {
-        _pokemonList.value = _pokemonList.value?.sortedWith(compareBy<PokemonDetailResponse> { it.types.firstOrNull()?.type?.name ?: "" }.thenBy { it.id })
+        _pokemonList.value = _pokemonList.value?.sortedWith(compareBy<PokemonDetailResponse> {
+            it.types.firstOrNull()?.type?.name ?: ""
+        }.thenBy { it.id })
     }
 
     fun applyFilterAndSort(type: String, sortBy: String) {
         viewModelScope.launch {
             try {
                 _isLoading.value = true
-                var list = if (type == "All Types") originalList else originalList.filter { pokemon ->
-                    pokemon.types.any { it.type.name.equals(type, ignoreCase = true) }
-                }
+                var list =
+                    if (type == "All Types") originalList else originalList.filter { pokemon ->
+                        pokemon.types.any { it.type.name.equals(type, ignoreCase = true) }
+                    }
                 list = when (sortBy) {
                     "ID" -> list.sortedBy { it.id }
                     "Alphabetical" -> list.sortedBy { it.name }
-                    "Type" -> list.sortedWith(compareBy<PokemonDetailResponse> { it.types.firstOrNull()?.type?.name ?: "" }.thenBy { it.id })
+                    "Type" -> list.sortedWith(compareBy<PokemonDetailResponse> {
+                        it.types.firstOrNull()?.type?.name ?: ""
+                    }.thenBy { it.id })
+
                     else -> list
                 }
                 _pokemonList.value = list

@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_prairie_pokemon_screencapture_by_nemotrex_de8nlib_fullview"
+    android:background="@drawable/osxen1"
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView

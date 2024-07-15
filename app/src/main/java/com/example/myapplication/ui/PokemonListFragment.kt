@@ -21,7 +21,11 @@ class PokemonListFragment : Fragment() {
     private val viewModel: MainViewModel by viewModels()
     private lateinit var adapter: PokeAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentPokemonListBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -51,30 +55,44 @@ class PokemonListFragment : Fragment() {
     }
 
     private fun setupTypeFilterSpinner() {
-        val types = listOf("All Types", "Normal", "Fire", "Water", "Grass", "Poison", "Flying", "Bug")
-        val spinnerAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, types)
+        val types =
+            listOf("All Types", "Normal", "Fire", "Water", "Grass", "Poison", "Flying", "Bug")
+        val spinnerAdapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, types)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         binding.typeFilterSpinner.adapter = spinnerAdapter
-        binding.typeFilterSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                val selectedType = types[position]
-                val selectedSort = binding.sortSpinner.selectedItem.toString()
-                viewModel.applyFilterAndSort(selectedType, selectedSort)
-            }
+        binding.typeFilterSpinner.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    val selectedType = types[position]
+                    val selectedSort = binding.sortSpinner.selectedItem.toString()
+                    viewModel.applyFilterAndSort(selectedType, selectedSort)
+                }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {}
-        }
+                override fun onNothingSelected(parent: AdapterView<*>) {}
+            }
     }
 
     private fun setupSortSpinner() {
-        val sortOptions = listOf("ID", "A-Z", "Type")
-        val spinnerAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, sortOptions)
+        val sortOptions = listOf("ID", "Alphabetical", "Type")
+        val spinnerAdapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, sortOptions)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         binding.sortSpinner.adapter = spinnerAdapter
         binding.sortSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 val selectedType = binding.typeFilterSpinner.selectedItem.toString()
                 val selectedSort = sortOptions[position]
                 viewModel.applyFilterAndSort(selectedType, selectedSort)

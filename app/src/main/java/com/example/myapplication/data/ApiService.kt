@@ -21,7 +21,6 @@ val retrofit = Retrofit.Builder()
     .build()
 
 
-
 interface ApiService {
     @GET("pokemon")
     suspend fun getPokemonList(): PokemonListResponse

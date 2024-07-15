@@ -31,7 +31,8 @@ class PokeAdapter(private val onItemClick: (PokemonDetailResponse) -> Unit) : Re
         fun bind(pokemon: PokemonDetailResponse) {
             binding.pokemonName.text = pokemon.name.replaceFirstChar { it.uppercase() }
             binding.pokemonId.text = "ID: ${pokemon.id}"
-            binding.pokemonTypes.text = pokemon.types.joinToString(", ") { it.type.name.capitalize() }
+            binding.pokemonTypes.text =
+                pokemon.types.joinToString(", ") { it.type.name.capitalize() }
             binding.pokemonImage.load(pokemon.sprites.front_default) {
                 crossfade(true)
                 placeholder(R.drawable.ic_launcher_foreground)

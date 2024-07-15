@@ -19,7 +19,11 @@ class DetailFragment : Fragment() {
     private val args: DetailFragmentArgs by navArgs()
     private val viewModel: MainViewModel by viewModels()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -45,8 +49,9 @@ class DetailFragment : Fragment() {
         binding.pokemonNameTextView.text = pokemon.name.capitalize()
         binding.pokemonIdTextView.text = "ID: ${pokemon.id}"
         binding.pokemonImageView.load(pokemon.sprites.front_default)
-        binding.pokemonTypesTextView.text = pokemon.types.joinToString(", ") { it.type.name.capitalize() }
-        }
+        binding.pokemonTypesTextView.text =
+            pokemon.types.joinToString(", ") { it.type.name.capitalize() }
+    }
 
 
     override fun onDestroyView() {

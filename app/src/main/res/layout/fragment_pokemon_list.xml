@@ -8,12 +8,9 @@
     <Spinner
         android:id="@+id/typeFilterSpinner"
         android:layout_width="190dp"
-        android:layout_height="18dp"
+        android:layout_height="48dp"
         android:layout_margin="16dp"
         android:layout_marginTop="16dp"
-
-        android:background="#5937AC32"
-        android:backgroundTint="#70128C7A"
         android:popupBackground="@drawable/d5gqzol_f225d55c_f338_4d67_9a51_4086557aa88f"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,12 +19,11 @@
     <Spinner
         android:id="@+id/sortSpinner"
         android:layout_width="190dp"
-        android:popupBackground="@drawable/d5gqzol_f225d55c_f338_4d67_9a51_4086557aa88f"
+        android:layout_height="48dp"
 
-        android:layout_height="18dp"
         android:layout_margin="16dp"
-        android:background="#5937AC32"
-        android:backgroundTint="#70128C7A"
+        android:popupBackground="@drawable/d5gqzol_f225d55c_f338_4d67_9a51_4086557aa88f"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,11 +41,11 @@
         android:id="@+id/imageView"
         android:layout_width="24dp"
         android:layout_height="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:foregroundTint="#000000"
         android:src="@drawable/aszendent_sorte"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.958"
+        app:layout_constraintHorizontal_bias="0.912"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,11 +53,11 @@
         android:id="@+id/imageView2"
         android:layout_width="30dp"
         android:layout_height="19dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:foregroundTint="#000000"
         android:src="@drawable/filter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
